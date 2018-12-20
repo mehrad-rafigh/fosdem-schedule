@@ -1,0 +1,139 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "schedule-web-app": {
+      "root": "apps/schedule-web-app/",
+      "sourceRoot": "apps/schedule-web-app/src",
+      "projectType": "application",
+      "prefix": "fs",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/schedule-web-app",
+            "index": "apps/schedule-web-app/src/index.html",
+            "main": "apps/schedule-web-app/src/main.ts",
+            "polyfills": "apps/schedule-web-app/src/polyfills.ts",
+            "tsConfig": "apps/schedule-web-app/tsconfig.app.json",
+            "assets": [
+              "apps/schedule-web-app/src/favicon.ico",
+              "apps/schedule-web-app/src/assets"
+            ],
+            "styles": [
+              "apps/schedule-web-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/schedule-web-app/src/environments/environment.ts",
+                  "with": "apps/schedule-web-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "schedule-web-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "schedule-web-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "schedule-web-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/schedule-web-app/tsconfig.app.json",
+              "apps/schedule-web-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/schedule-web-app/jest.config.js",
+            "tsConfig": "apps/schedule-web-app/tsconfig.spec.json",
+            "setupFile": "apps/schedule-web-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "schedule-web-app-e2e": {
+      "root": "apps/schedule-web-app-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/schedule-web-app-e2e/cypress.json",
+            "tsConfig": "apps/schedule-web-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "schedule-web-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "schedule-web-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/schedule-web-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics",
+    "packageManager": "npm"
+  },
+  "defaultProject": "schedule-web-app"
+}
