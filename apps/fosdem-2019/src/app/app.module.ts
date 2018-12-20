@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CommonUiModule } from "@cs/common-ui";
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: "enabled" }),
     ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonUiModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/schedule-web-app",
+    "outDir": "../../dist/out-tsc/apps/fosdem-2019",
     "types": []
   },
   "exclude": ["src/test-setup.ts", "**/*.spec.ts"],

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/schedule-web-app/",
+    "outDir": "../../dist/out-tsc/apps/fosdem-2019/",
     "module": "commonjs",
     "types": ["jest", "node"]
   },

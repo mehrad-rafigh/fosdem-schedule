@@ -6,5 +6,10 @@ module.exports = {
   resolver: "@nrwl/builders/plugins/jest/resolver",
   moduleFileExtensions: ["ts", "js", "html"],
   collectCoverage: true,
-  coverageReporters: ["html"]
+  coverageReporters: ["html"],
+  snapshotSerializers: [
+    "jest-preset-angular/AngularSnapshotSerializer.js",
+    "jest-preset-angular/HTMLCommentSerializer.js"
+  ],
+  transformIgnorePatterns: ["node_modules/(?!(@ngrx))"]
 };

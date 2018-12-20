@@ -1,6 +1,6 @@
 {
-  "name": "schedule-web-app",
-  "short_name": "schedule-web-app",
+  "name": "fosdem-2019",
+  "short_name": "fosdem-2019",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

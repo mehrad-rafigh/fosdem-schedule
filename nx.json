@@ -1,5 +1,5 @@
 {
-  "npmScope": "mehrad-rafigh",
+  "npmScope": "cs",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -8,13 +8,14 @@
     "nx.json": "*"
   },
   "projects": {
-    "schedule-web-app": {
-      "tags": [
-        "schedule-web-app"
-      ]
+    "fosdem-2019": {
+      "tags": ["fosdem-2019"]
     },
-    "schedule-web-app-e2e": {
+    "fosdem-2019-e2e": {
       "tags": []
+    },
+    "common-ui": {
+      "tags": ["common-ui"]
     }
   }
 }
