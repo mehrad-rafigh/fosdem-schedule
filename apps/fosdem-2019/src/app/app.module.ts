@@ -12,7 +12,7 @@ import { CommonUiModule } from "@cs/common-ui";
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: "fosdem-2019" }),
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: "enabled" }),
     ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),

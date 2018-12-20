@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/fosdem-2019",
+            "outputPath": "dist/apps/fosdem-2019/browser",
             "index": "apps/fosdem-2019/src/index.html",
             "main": "apps/fosdem-2019/src/main.ts",
             "polyfills": "apps/fosdem-2019/src/polyfills.ts",
@@ -81,8 +81,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/fosdem-2019/tsconfig.app.json", "apps/fosdem-2019/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "apps/fosdem-2019/tsconfig.app.json",
+              "apps/fosdem-2019/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -91,6 +96,24 @@
             "jestConfig": "apps/fosdem-2019/jest.config.js",
             "tsConfig": "apps/fosdem-2019/tsconfig.spec.json",
             "setupFile": "apps/fosdem-2019/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/fosdem-2019/server",
+            "main": "apps/fosdem-2019/src/main.server.ts",
+            "tsConfig": "apps/fosdem-2019/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fosdem-2019/src/environments/environment.ts",
+                  "with": "apps/fosdem-2019/src/environments/environment.prod.ts"
+                }
+              ]
+            }
           }
         }
       }
@@ -117,7 +140,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/fosdem-2019-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -131,8 +156,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/common-ui/tsconfig.lib.json", "libs/common-ui/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "libs/common-ui/tsconfig.lib.json",
+              "libs/common-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
