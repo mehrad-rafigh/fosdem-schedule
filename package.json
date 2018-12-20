@@ -41,6 +41,18 @@
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "{apps,libs}/**/*.{ts,json,md,html}": [
+      "npm run affected:lint -- --uncommitted --parallel",
+      "npm run format:write -- --uncommitted",
+      "git add"
+    ],
+    "{apps,libs}/**/*.scss": [
+      "prettier --write '{apps,libs}/**/*.scss'",
+      "npm run lint:styles -- --fix",
+      "git add"
+    ]
+  },
   "prettier": {
     "printWidth": 120,
     "singleQuote": false
