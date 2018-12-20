@@ -1,0 +1,10 @@
+FROM node:10.14.2-alpine
+
+RUN mkdir -p /var/www/html/dist
+WORKDIR /var/www/html
+
+EXPOSE 4000
+
+COPY dist/ dist
+
+CMD node dist/apps/fosdem-2019/server.js

@@ -1,0 +1,21 @@
+# Created by .ignore support plugin (hsz.mobi)
+!dist
+apps
+libs
+node_modules
+tools
+
+.editorconfig
+.gitignore
+.npmrc
+.nvmrc
+.prettierignore
+.travis.yml
+angular.json
+jest.config.js
+nx.json
+package.json
+package-lock.json
+README.md
+tsconfig.json
+tslint.json
