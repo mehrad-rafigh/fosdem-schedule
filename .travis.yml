@@ -34,4 +34,5 @@ jobs:
 
     - stage: build
       script:
-        - npm run affected:build -- --base=origin/master
+        - npm run build:fosdem19:ssr:production
+        - sh build-docker-fosdem19.sh
