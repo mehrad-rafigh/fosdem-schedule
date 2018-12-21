@@ -8,4 +8,4 @@ EXPOSE 4000
 
 COPY dist/ dist
 
-CMD node dist/apps/fosdem-2019/server.js
+CMD node dist/apps/fosdem/server.js

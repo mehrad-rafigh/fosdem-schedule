@@ -8,13 +8,29 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types"],
-    "types": ["node", "jest"],
-    "lib": ["es2018", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@cs/common-ui": ["libs/common-ui/src/index.ts"]
+      "@cs/common-ui": [
+        "libs/common-ui/src/index.ts"
+      ],
+      "@cs/fosdem-lib": [
+        "libs/fosdem-lib/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
