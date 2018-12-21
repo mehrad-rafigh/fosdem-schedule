@@ -13,9 +13,12 @@ import { environment } from "../environments/environment";
   imports: [
     BrowserModule.withServerTransition({ appId: "fosdem" }),
     NxModule.forRoot(),
-    RouterModule.forRoot([{ path: "", loadChildren: "@cs/fosdem-lib#FosdemLibModule" }], {
-      initialNavigation: "enabled"
-    }),
+    RouterModule.forRoot(
+      [{ path: "", loadChildren: "@cs/fosdem-lib#FosdemLibModule" }, { path: "**", redirectTo: "" }],
+      {
+        initialNavigation: "enabled"
+      }
+    ),
     BrowserAnimationsModule,
     ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production })
   ],

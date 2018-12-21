@@ -8,6 +8,6 @@ const declarationToExport = [NavbarComponent];
 @NgModule({
   imports: [CommonModule, MatToolbarModule],
   declarations: [...declarationToExport],
-  exports: [...declarationToExport]
+  exports: [...declarationToExport, MatToolbarModule]
 })
 export class CommonUiModule {}

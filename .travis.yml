@@ -25,12 +25,12 @@ jobs:
 
     - stage: lint
       script:
-        - npm run affected:lint -- --base=origin/master
+        - npm run affected:lint -- --base=master --parallel
         - npm run lint:styles
 
     - stage: test
       script:
-        - npm run affected:test -- --base=origin/master
+        - npm run affected:test -- --base=master
 
     - stage: build
       script:
