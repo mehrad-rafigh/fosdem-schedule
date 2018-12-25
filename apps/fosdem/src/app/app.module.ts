@@ -13,7 +13,7 @@ import { RouterModule } from "@angular/router";
   imports: [
     BrowserModule.withServerTransition({ appId: "fosdem" }),
     NxModule.forRoot(),
-    RouterModule.forRoot([], {
+    RouterModule.forRoot([{ path: "", loadChildren: "@cs/fosdem-lib#FosdemLibModule" }], {
       initialNavigation: "enabled"
     }),
     BrowserAnimationsModule,

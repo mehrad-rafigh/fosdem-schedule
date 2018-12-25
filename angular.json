@@ -22,7 +22,11 @@
             "main": "apps/fosdem/src/main.ts",
             "polyfills": "apps/fosdem/src/polyfills.ts",
             "tsConfig": "apps/fosdem/tsconfig.app.json",
-            "assets": ["apps/fosdem/src/favicon.ico", "apps/fosdem/src/assets", "apps/fosdem/src/manifest.json"],
+            "assets": [
+              "apps/fosdem/src/favicon.ico",
+              "apps/fosdem/src/assets",
+              "apps/fosdem/src/manifest.json"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/fosdem/src/styles.scss"
@@ -77,8 +81,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/fosdem/tsconfig.app.json", "apps/fosdem/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "apps/fosdem/tsconfig.app.json",
+              "apps/fosdem/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -133,30 +142,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/fosdem-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
-    "common-ui": {
-      "root": "libs/common-ui",
-      "sourceRoot": "libs/common-ui/src",
-      "projectType": "library",
-      "prefix": "fs",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["libs/common-ui/tsconfig.lib.json", "libs/common-ui/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/common-ui/jest.config.js",
-            "tsConfig": "libs/common-ui/tsconfig.spec.json",
-            "setupFile": "libs/common-ui/src/test-setup.ts"
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -170,8 +158,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/fosdem-lib/tsconfig.lib.json", "libs/fosdem-lib/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "libs/fosdem-lib/tsconfig.lib.json",
+              "libs/fosdem-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -180,6 +173,34 @@
             "jestConfig": "libs/fosdem-lib/jest.config.js",
             "tsConfig": "libs/fosdem-lib/tsconfig.spec.json",
             "setupFile": "libs/fosdem-lib/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "common-ui": {
+      "root": "libs/common-ui",
+      "sourceRoot": "libs/common-ui/src",
+      "projectType": "library",
+      "prefix": "cs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common-ui/tsconfig.lib.json",
+              "libs/common-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/common-ui/jest.config.js",
+            "tsConfig": "libs/common-ui/tsconfig.spec.json",
+            "setupFile": "libs/common-ui/src/test-setup.ts"
           }
         }
       }
