@@ -10,7 +10,7 @@
     "test:ci": "ng test",
     "gc": "git-cz",
     "build:fosdem19:ssr": "npm run build:fosdem19:client && npm run build:fosdem19:server",
-    "build:fosdem19:ssr:production": "npm run build:fosdem19:client:production && npm run build:fosdem19:server",
+    "build:fosdem19:ssr:production": "npm run build:fosdem19:client:production && npm run build:fosdem19:server:prod",
     "build:fosdem19:client": "ng build --project=fosdem --stats-json",
     "build:fosdem19:client:production": "ng build --project=fosdem --configuration=production --stats-json",
     "build:fosdem19:server": "ng run fosdem:server && npm run webpack:fosdem19:server",
