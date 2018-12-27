@@ -24,6 +24,8 @@
             "tsConfig": "apps/fosdem/tsconfig.app.json",
             "assets": [
               "apps/fosdem/src/favicon.ico",
+              "apps/fosdem/src/favicon-16x16.png",
+              "apps/fosdem/src/favicon-32x32.png",
               "apps/fosdem/src/assets",
               "apps/fosdem/src/manifest.json"
             ],
@@ -58,6 +60,14 @@
                 }
               ],
               "serviceWorker": true
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fosdem/src/environments/environment.ts",
+                  "with": "apps/fosdem/src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
@@ -69,6 +79,10 @@
           "configurations": {
             "production": {
               "browserTarget": "fosdem:build:production"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "fosdem:build:hmr"
             }
           }
         },
@@ -81,13 +95,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/fosdem/tsconfig.app.json",
-              "apps/fosdem/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/fosdem/tsconfig.app.json", "apps/fosdem/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -142,9 +151,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/fosdem-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -158,13 +165,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/fosdem-lib/tsconfig.lib.json",
-              "libs/fosdem-lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/fosdem-lib/tsconfig.lib.json", "libs/fosdem-lib/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -186,13 +188,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/common-ui/tsconfig.lib.json",
-              "libs/common-ui/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/common-ui/tsconfig.lib.json", "libs/common-ui/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {

@@ -1,8 +1,8 @@
 {
-  "name": "fosdem",
+  "name": "fosdem 2019",
   "short_name": "fosdem",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#ab1892",
+  "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

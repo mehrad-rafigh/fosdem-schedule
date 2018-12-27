@@ -11,28 +11,11 @@ notifications:
     on_failure: change
     on_success: change
 
-stages:
-  - install
-  - lint
-  - test
-  - build
+install:
+  - npm ci
 
-
-jobs:
-  include:
-    - stage: install
-      script: npm ci
-
-    - stage: lint
-      script:
-        - npm run affected:lint -- --base=master --parallel
-        - npm run lint:styles
-
-    - stage: test
-      script:
-        - npm run affected:test -- --base=master
-
-    - stage: build
-      script:
-        - npm run build:fosdem19:ssr:production
-        - sh build-docker-fosdem19.sh
+script:
+  - npm run affected:lint -- --base=master
+  - npm run affected:test -- --base=master
+  - npm run build:fosdem19:ssr:production
+  - sh build-docker-fosdem19.sh
