@@ -9,6 +9,8 @@
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",
     "lint:styles": "stylelint \"{apps,libs}/**/*.scss\"",
+    "lint:ci": "npm run affected:lint -- --base=origin/master",
+    "test:ci": "npm run affected:test -- --base=origin/master",
     "e2e": "ng e2e",
     "gc": "git-cz",
     "build:fosdem19:ssr": "npm run build:fosdem19:client && npm run build:fosdem19:server",

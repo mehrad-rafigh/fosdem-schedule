@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu -o pipefail
+set -euo
 set -x
 
 declare -r GIT_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
