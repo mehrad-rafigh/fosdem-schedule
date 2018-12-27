@@ -15,7 +15,7 @@ install:
   - npm ci
 
 script:
-  - npm run lint:ci
-  - npm run test:ci
+  - npm run lint
+  - npm run test
   - npm run build:fosdem19:ssr:production
   - sh build-docker-fosdem19.sh
