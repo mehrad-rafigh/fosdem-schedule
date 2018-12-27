@@ -50,7 +50,7 @@
   },
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,md,html}": [
-      "npm run affected:lint -- --uncommitted --parallel",
+      "npm run affected:lint -- --uncommitted",
       "npm run format:write -- --uncommitted",
       "git add"
     ],
