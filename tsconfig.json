@@ -13,8 +13,9 @@
     "lib": ["es2018", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@cs/common-ui": ["libs/common-ui/src/index.ts"]
+      "@cs/common-ui": ["libs/common-ui/src/index.ts"],
+      "@cs/fosdem-lib": ["libs/fosdem-lib/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "apps/**/*.spec.ts", "libs/**/*.spec.ts"]
 }

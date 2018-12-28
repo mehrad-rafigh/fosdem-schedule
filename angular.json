@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "fosdem-2019": {
-      "root": "apps/fosdem-2019/",
-      "sourceRoot": "apps/fosdem-2019/src",
+    "fosdem": {
+      "root": "apps/fosdem/",
+      "sourceRoot": "apps/fosdem/src",
       "projectType": "application",
       "prefix": "fs",
       "schematics": {
@@ -17,19 +17,21 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/fosdem-2019/browser",
-            "index": "apps/fosdem-2019/src/index.html",
-            "main": "apps/fosdem-2019/src/main.ts",
-            "polyfills": "apps/fosdem-2019/src/polyfills.ts",
-            "tsConfig": "apps/fosdem-2019/tsconfig.app.json",
+            "outputPath": "dist/apps/fosdem/browser",
+            "index": "apps/fosdem/src/index.html",
+            "main": "apps/fosdem/src/main.ts",
+            "polyfills": "apps/fosdem/src/polyfills.ts",
+            "tsConfig": "apps/fosdem/tsconfig.app.json",
             "assets": [
-              "apps/fosdem-2019/src/favicon.ico",
-              "apps/fosdem-2019/src/assets",
-              "apps/fosdem-2019/src/manifest.json"
+              "apps/fosdem/src/favicon.ico",
+              "apps/fosdem/src/favicon-16x16.png",
+              "apps/fosdem/src/favicon-32x32.png",
+              "apps/fosdem/src/assets",
+              "apps/fosdem/src/manifest.json"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "apps/fosdem-2019/src/styles.scss"
+              "apps/fosdem/src/styles.scss"
             ],
             "scripts": []
           },
@@ -37,8 +39,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/fosdem-2019/src/environments/environment.ts",
-                  "with": "apps/fosdem-2019/src/environments/environment.prod.ts"
+                  "replace": "apps/fosdem/src/environments/environment.ts",
+                  "with": "apps/fosdem/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -58,91 +60,121 @@
                 }
               ],
               "serviceWorker": true
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/fosdem/src/environments/environment.ts",
+                  "with": "apps/fosdem/src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fosdem-2019:build"
+            "browserTarget": "fosdem:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fosdem-2019:build:production"
+              "browserTarget": "fosdem:build:production"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "fosdem:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fosdem-2019:build"
+            "browserTarget": "fosdem:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/fosdem-2019/tsconfig.app.json",
-              "apps/fosdem-2019/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/fosdem/tsconfig.app.json", "apps/fosdem/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "apps/fosdem-2019/jest.config.js",
-            "tsConfig": "apps/fosdem-2019/tsconfig.spec.json",
-            "setupFile": "apps/fosdem-2019/src/test-setup.ts"
+            "jestConfig": "apps/fosdem/jest.config.js",
+            "tsConfig": "apps/fosdem/tsconfig.spec.json",
+            "setupFile": "apps/fosdem/src/test-setup.ts"
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/apps/fosdem-2019/server",
-            "main": "apps/fosdem-2019/src/main.server.ts",
-            "tsConfig": "apps/fosdem-2019/tsconfig.server.json"
+            "outputPath": "dist/apps/fosdem/server",
+            "main": "apps/fosdem/src/main.server.ts",
+            "tsConfig": "apps/fosdem/tsconfig.server.json"
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/fosdem-2019/src/environments/environment.ts",
-                  "with": "apps/fosdem-2019/src/environments/environment.prod.ts"
+                  "replace": "apps/fosdem/src/environments/environment.ts",
+                  "with": "apps/fosdem/src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "optimization": true,
+              "sourceMap": false
             }
           }
         }
       }
     },
-    "fosdem-2019-e2e": {
-      "root": "apps/fosdem-2019-e2e",
+    "fosdem-e2e": {
+      "root": "apps/fosdem-e2e",
       "projectType": "application",
       "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@nrwl/builders:cypress",
           "options": {
-            "cypressConfig": "apps/fosdem-2019-e2e/cypress.json",
-            "tsConfig": "apps/fosdem-2019-e2e/tsconfig.e2e.json",
-            "devServerTarget": "fosdem-2019:serve"
+            "cypressConfig": "apps/fosdem-e2e/cypress.json",
+            "tsConfig": "apps/fosdem-e2e/tsconfig.e2e.json",
+            "devServerTarget": "fosdem:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fosdem-2019:serve:production"
+              "devServerTarget": "fosdem:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "apps/fosdem-2019-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": "apps/fosdem-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "fosdem-lib": {
+      "root": "libs/fosdem-lib",
+      "sourceRoot": "libs/fosdem-lib/src",
+      "projectType": "library",
+      "prefix": "cs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/fosdem-lib/tsconfig.lib.json", "libs/fosdem-lib/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/fosdem-lib/jest.config.js",
+            "tsConfig": "libs/fosdem-lib/tsconfig.spec.json",
+            "setupFile": "libs/fosdem-lib/src/test-setup.ts"
           }
         }
       }
@@ -151,18 +183,13 @@
       "root": "libs/common-ui",
       "sourceRoot": "libs/common-ui/src",
       "projectType": "library",
-      "prefix": "fs",
+      "prefix": "cs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/common-ui/tsconfig.lib.json",
-              "libs/common-ui/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/common-ui/tsconfig.lib.json", "libs/common-ui/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -184,5 +211,5 @@
     "defaultCollection": "@nrwl/schematics",
     "packageManager": "npm"
   },
-  "defaultProject": "fosdem-2019"
+  "defaultProject": "fosdem"
 }

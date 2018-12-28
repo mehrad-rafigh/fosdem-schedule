@@ -8,14 +8,23 @@
     "nx.json": "*"
   },
   "projects": {
-    "fosdem-2019": {
-      "tags": ["fosdem-2019"]
+    "common-ui": {
+      "tags": [
+        "common-ui"
+      ]
     },
-    "fosdem-2019-e2e": {
+    "fosdem": {
+      "tags": [
+        "fosdem"
+      ]
+    },
+    "fosdem-e2e": {
       "tags": []
     },
-    "common-ui": {
-      "tags": ["common-ui"]
+    "fosdem-lib": {
+      "tags": [
+        "fosdem-lib"
+      ]
     }
   }
 }

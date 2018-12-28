@@ -1,5 +1,6 @@
 # Conference Schedule
-[![Build Status](https://travis-ci.org/mehrad-rafigh/conference-schedule.svg?branch=master)](https://travis-ci.org/mehrad-rafigh/conference-schedule)
+
+[![Build Status](https://travis-ci.org/mehrad-rafigh/conference-schedule.svg?branch=master)](https://travis-ci.org/mehrad-rafigh/conference-schedule) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
@@ -43,3 +44,11 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## FOSDEM Schedule
+
+The fosdem schedule the fosdem app uses is parsed from pentabarf xml to json and then some script magic has to happen in order to have valid json
+
+(tr -d '\n\r\t' < apps/fosdem/src/assets/fosdem18.json) > apps/fosdem/src/assets/fosdem18.json
+
+This will remove any narsty things from our json, so it can be consumed within the fosdem app.

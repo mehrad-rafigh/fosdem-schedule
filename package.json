@@ -3,17 +3,19 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "./node_modules/.bin/nx lint && ng lint",
+    "start:fosdem": "ng serve fosdem",
+    "start:fosdem:hmr": "ng serve fosdem --configuration hmr",
     "lint:styles": "stylelint \"{apps,libs}/**/*.scss\"",
-    "e2e": "ng e2e",
+    "lint:ci": "ng lint",
+    "test:ci": "ng test",
+    "gc": "git-cz",
     "build:fosdem19:ssr": "npm run build:fosdem19:client && npm run build:fosdem19:server",
-    "build:fosdem19:client": "ng build --project=fosdem-2019 --stats-json",
-    "build:fosdem19:server": "ng run fosdem-2019:server && npm run webpack:fosdem19:server",
-    "webpack:fosdem19:server": "webpack --config \"./apps/fosdem-2019/webpack.server.config.js\" --progress --colors",
+    "build:fosdem19:ssr:production": "npm run build:fosdem19:client:production && npm run build:fosdem19:server:prod",
+    "build:fosdem19:client": "ng build --project=fosdem --stats-json",
+    "build:fosdem19:client:production": "ng build --project=fosdem --configuration=production --stats-json",
+    "build:fosdem19:server": "ng run fosdem:server && npm run webpack:fosdem19:server",
+    "build:fosdem19:server:prod": "ng run fosdem:server:production && npm run webpack:fosdem19:server",
+    "webpack:fosdem19:server": "webpack --config \"./apps/fosdem/webpack.server.config.js\" --progress --colors",
     "affected:apps": "./node_modules/.bin/nx affected:apps",
     "affected:libs": "./node_modules/.bin/nx affected:libs",
     "affected:build": "./node_modules/.bin/nx affected:build",
@@ -31,13 +33,36 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "include"
+          ]
+        }
+      ],
+      "selector-type-no-unknown": [
+        true,
+        {
+          "ignore": [
+            "custom-elements"
+          ]
+        }
+      ]
+    }
   },
   "husky": {
     "hooks": {
@@ -47,7 +72,6 @@
   },
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,md,html}": [
-      "npm run affected:lint -- --uncommitted --parallel",
       "npm run format:write -- --uncommitted",
       "git add"
     ],
@@ -94,6 +118,7 @@
     "@angular/cli": "7.1.4",
     "@angular/compiler-cli": "7.1.4",
     "@angular/language-service": "7.1.4",
+    "@angularclass/hmr": "2.1.3",
     "@commitlint/cli": "7.2.1",
     "@commitlint/config-conventional": "7.1.2",
     "@ngrx/store-devtools": "7.0.0",
@@ -103,7 +128,9 @@
     "@types/jquery": "3.3.28",
     "@types/node": "10.12.18",
     "codelyzer": "4.5.0",
+    "commitizen": "3.0.5",
     "cypress": "3.1.3",
+    "cz-conventional-changelog": "2.1.0",
     "husky": "1.3.0",
     "jasmine-marbles": "0.4.0",
     "jest": "23.6.0",
@@ -111,6 +138,7 @@
     "lint-staged": "8.1.0",
     "ngrx-store-freeze": "0.2.4",
     "prettier": "1.15.3",
+    "semantic-release": "15.13.1",
     "stylelint": "9.9.0",
     "stylelint-checkstyle-formatter": "0.1.2",
     "stylelint-config-standard": "18.2.0",
