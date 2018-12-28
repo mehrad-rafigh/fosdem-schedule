@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Actions, Effect } from "@ngrx/effects";
+import { Effect, Actions } from "@ngrx/effects";
 import { DataPersistence } from "@nrwl/nx";
 
-import { SCHEDULE_FEATURE_KEY, SchedulePartialState } from "./schedule.reducer";
-import { LoadSchedule, ScheduleActionTypes, ScheduleLoaded, ScheduleLoadError } from "./schedule.actions";
+import { SchedulePartialState } from "./schedule.reducer";
+import { LoadSchedule, ScheduleLoaded, ScheduleLoadError, ScheduleActionTypes } from "./schedule.actions";
 import { ScheduleService } from "../services/schedule.service";
 import { map } from "rxjs/operators";
 

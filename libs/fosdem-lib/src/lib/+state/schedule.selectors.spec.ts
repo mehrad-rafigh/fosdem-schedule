@@ -3,7 +3,6 @@ import { Schedule } from "../interfaces/schedule";
 
 describe("Schedule Selectors", () => {
   const ERROR_MSG = "No Error Available";
-
   let storeState;
 
   beforeEach(() => {
@@ -21,7 +20,6 @@ describe("Schedule Selectors", () => {
   describe("Schedule Selectors", () => {
     it("getAllSchedule() should return the list of Schedule", () => {
       const results = scheduleQuery.getAllSchedule(storeState);
-
       expect(results).toBeTruthy();
     });
 
