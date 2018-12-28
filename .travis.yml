@@ -6,7 +6,8 @@ env:
 branches:
   only:
     - master
-    - ^pr
+  except:
+    - /^pr\..*/
 
 language: node_js
 node_js:
