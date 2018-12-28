@@ -17,5 +17,5 @@
       "@cs/fosdem-lib": ["libs/fosdem-lib/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp", "apps/**/*.spec.ts", "libs/**/*.spec.ts"]
+  "exclude": ["node_modules/@types", "node_modules", "tmp", "apps/**/*.spec.ts", "libs/**/*.spec.ts"]
 }
