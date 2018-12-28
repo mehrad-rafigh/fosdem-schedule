@@ -4,7 +4,7 @@ import { Schedule } from "../interfaces/schedule";
 export const SCHEDULE_FEATURE_KEY = "schedule";
 
 export interface ScheduleState {
-  schedule: Schedule; // list of Schedule; analogous to a sql normalized table
+  schedule: Schedule; // schedule of fosdem
   loaded: boolean; // has the Schedule list been loaded
   error?: any; // last none error (if any)
 }

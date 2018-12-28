@@ -7,14 +7,14 @@ import { ScheduleService } from "./services/schedule.service";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { SCHEDULE_FEATURE_KEY, initialState as scheduleInitialState, scheduleReducer } from "./+state/schedule.reducer";
-import { ScheduleEffects } from "./+state/schedule.effects";
-import { ScheduleFacade } from "./+state/schedule.facade";
+import { ScheduleEffects } from "@cs/fosdem-lib";
+import { ScheduleFacade } from "@cs/fosdem-lib";
 
 @NgModule({
   imports: [
     CommonUiModule,
     CommonModule,
-    RouterModule.forChild([{ path: "", pathMatch: "full", component: HomeComponent }]),
+    RouterModule.forChild([{ path: "", pathMatch: "full", component: HomeComponent }, { path: "**", redirectTo: "" }]),
     StoreModule.forFeature(SCHEDULE_FEATURE_KEY, scheduleReducer, { initialState: scheduleInitialState }),
     EffectsModule.forFeature([ScheduleEffects])
   ],
