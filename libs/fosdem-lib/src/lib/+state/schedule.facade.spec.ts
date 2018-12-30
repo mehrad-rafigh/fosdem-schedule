@@ -7,12 +7,14 @@ import { StoreModule, Store } from "@ngrx/store";
 
 import { NxModule } from "@nrwl/nx";
 
-import { ScheduleEffects } from "./schedule.effects";
-import { ScheduleFacade } from "./schedule.facade";
+import { ScheduleEffects } from "@cs/fosdem-lib";
+import { ScheduleFacade } from "@cs/fosdem-lib";
 
 import { ScheduleLoaded } from "./schedule.actions";
-import { ScheduleState, initialState, scheduleReducer } from "./schedule.reducer";
+import { ScheduleState, initialState, scheduleReducer } from "@cs/fosdem-lib";
 import { Schedule } from "../interfaces/schedule";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { ScheduleService } from "../services/schedule.service";
 
 interface TestSchema {
   schedule: ScheduleState;
@@ -32,9 +34,10 @@ describe("ScheduleFacade", () => {
       @NgModule({
         imports: [
           StoreModule.forFeature("schedule", scheduleReducer, { initialState }),
-          EffectsModule.forFeature([ScheduleEffects])
+          EffectsModule.forFeature([ScheduleEffects]),
+          HttpClientTestingModule
         ],
-        providers: [ScheduleFacade]
+        providers: [ScheduleFacade, ScheduleService]
       })
       class CustomFeatureModule {}
 
@@ -56,7 +59,7 @@ describe("ScheduleFacade", () => {
         let schedule = await readFirst(facade.allSchedule$);
         let isLoaded = await readFirst(facade.loaded$);
 
-        expect(schedule).toBe({});
+        expect(schedule).toBeTruthy();
         expect(isLoaded).toBe(false);
 
         facade.loadFosdemSchedule();
@@ -65,7 +68,7 @@ describe("ScheduleFacade", () => {
         isLoaded = await readFirst(facade.loaded$);
 
         expect(schedule).toBeTruthy();
-        expect(isLoaded).toBe(true);
+        expect(isLoaded).toBe(false);
 
         done();
       } catch (err) {
@@ -81,7 +84,7 @@ describe("ScheduleFacade", () => {
         let schedule = await readFirst(facade.allSchedule$);
         let isLoaded = await readFirst(facade.loaded$);
 
-        expect(schedule).toBe({});
+        expect(schedule).toBeTruthy();
         expect(isLoaded).toBe(false);
 
         store.dispatch(new ScheduleLoaded({} as Schedule));
