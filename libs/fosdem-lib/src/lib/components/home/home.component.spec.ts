@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { HomeComponent } from "./home.component";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { ScheduleFacade } from "@cs/fosdem-lib";
+import { ScheduleFacade, ScheduleState } from "@cs/fosdem-lib";
 import { ScheduleService } from "../../services/schedule.service";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { MockStore } from "@ngrx/store/testing";
@@ -13,10 +13,13 @@ describe("HomeComponent", () => {
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
+    const emptyState = { schedule: {}, loaded: false };
+    const mockStore = new MockStore<ScheduleState>(emptyState);
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [HomeComponent],
-      providers: [ScheduleFacade, ScheduleService, { provide: Store, useValue: MockStore }],
+      providers: [ScheduleFacade, ScheduleService, { provide: Store, useValue: mockStore }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));

@@ -1,5 +1,6 @@
-import { ScheduleAction, ScheduleActionTypes } from "./schedule.actions";
+import { ScheduleAction, ScheduleActionTypes } from "@cs/fosdem-lib";
 import { Schedule } from "../interfaces/schedule";
+import { Event } from "../interfaces/event";
 
 export const SCHEDULE_FEATURE_KEY = "schedule";
 
@@ -7,6 +8,7 @@ export interface ScheduleState {
   schedule: Schedule; // schedule of fosdem
   loaded: boolean; // has the Schedule list been loaded
   error?: any; // last none error (if any)
+  pinned: Event[];
 }
 
 export interface SchedulePartialState {
@@ -15,7 +17,8 @@ export interface SchedulePartialState {
 
 export const initialState: ScheduleState = {
   schedule: {} as Schedule,
-  loaded: false
+  loaded: false,
+  pinned: []
 };
 
 export function scheduleReducer(state: ScheduleState = initialState, action: ScheduleAction): ScheduleState {
@@ -31,10 +34,27 @@ export function scheduleReducer(state: ScheduleState = initialState, action: Sch
     case ScheduleActionTypes.ScheduleLoadError: {
       state = {
         ...state,
-        loaded: false
+        loaded: false,
+        error: action.payload
       };
       break;
     }
+    case ScheduleActionTypes.AddEventToVisit: {
+      state = {
+        ...state,
+        pinned: [...state.pinned, action.payload]
+      };
+      break;
+    }
+    case ScheduleActionTypes.AddEventToVisitError: {
+      state = {
+        ...state,
+        error: action.payload
+      };
+      break;
+    }
+    default:
+      return state;
   }
 
   return state;
