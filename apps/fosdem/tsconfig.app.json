@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/fosdem"
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts", "../../libs/fosdem-lib/src/**/*.ts"]
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "../../libs/fosdem-lib/src/**/*.spec.ts"],
+  "include": ["src/**/*.ts", "../../libs/fosdem-lib/src/**/*.ts"]
 }

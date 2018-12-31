@@ -7,7 +7,8 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "skipLibCheck": true,
+    "target": "es2015",
     "typeRoots": ["node_modules/@types"],
     "types": ["node", "jest"],
     "lib": ["es2018", "dom"],
@@ -17,5 +18,5 @@
       "@cs/fosdem-lib": ["libs/fosdem-lib/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp", "apps/**/*.spec.ts", "libs/**/*.spec.ts"]
+  "exclude": ["node_modules/@types", "node_modules", "tmp", "apps/**/*.spec.ts", "libs/**/*.spec.ts"]
 }

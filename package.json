@@ -12,7 +12,7 @@
     "build:fosdem19:ssr": "npm run build:fosdem19:client && npm run build:fosdem19:server",
     "build:fosdem19:ssr:production": "npm run build:fosdem19:client:production && npm run build:fosdem19:server:prod",
     "build:fosdem19:client": "ng build --project=fosdem --stats-json",
-    "build:fosdem19:client:production": "ng build --project=fosdem --configuration=production --stats-json",
+    "build:fosdem19:client:production": "ng build --project=fosdem --configuration=production --stats-json --subresource-integrity",
     "build:fosdem19:server": "ng run fosdem:server && npm run webpack:fosdem19:server",
     "build:fosdem19:server:prod": "ng run fosdem:server:production && npm run webpack:fosdem19:server",
     "webpack:fosdem19:server": "webpack --config \"./apps/fosdem/webpack.server.config.js\" --progress --colors",
@@ -111,7 +111,8 @@
     "express": "4.16.4",
     "hammerjs": "2.0.8",
     "rxjs": "6.3.3",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "@ngrx/entity": "6.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.11.4",

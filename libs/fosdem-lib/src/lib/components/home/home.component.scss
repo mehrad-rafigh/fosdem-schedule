@@ -1,5 +1,10 @@
 :host {
-  cs-card {
-    margin: 16px;
+  .home-card-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+
+    cs-card {
+      margin: 16px;
+    }
   }
 }
